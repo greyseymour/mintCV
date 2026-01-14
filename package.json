@@ -10,11 +10,13 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.2",
     "@auth/core": "^0.18.0",
     "@blocknote/core": "^0.46.1",
     "@blocknote/react": "^0.46.1",
     "@hookform/resolvers": "^3.3.0",
     "@rainbow-me/rainbowkit": "^2.0.0",
+    "@react-pdf/renderer": "^4.3.2",
     "@supabase/auth-helpers-nextjs": "^0.9.0",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.39.0",
