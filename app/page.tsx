@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-hidden">
@@ -28,12 +30,16 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="glass-strong px-8 py-4 rounded-2xl font-semibold hover:glow-primary transition-all duration-300">
-                Get Started
-              </button>
-              <button className="glass px-8 py-4 rounded-2xl font-semibold text-text-secondary hover:text-text-primary transition-all duration-300">
-                Learn More
-              </button>
+              <Link href="/demo">
+                <button className="glass-strong px-8 py-4 rounded-2xl font-semibold hover:glow-primary transition-all duration-300 w-full sm:w-auto">
+                  Try Demo
+                </button>
+              </Link>
+              <Link href="/editor/new">
+                <button className="glass px-8 py-4 rounded-2xl font-semibold text-text-secondary hover:text-text-primary transition-all duration-300 w-full sm:w-auto">
+                  Start Building
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -52,6 +58,55 @@ export default function HomePage() {
               description="Export as PDF, mint onchain as NFT, or share your custom link"
             />
           </div>
+
+          {/* New Features Grid */}
+          <div className="glass-strong rounded-3xl p-8 mt-16 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold gradient-text mb-6">V1 MVP Features</h2>
+            <div className="grid md:grid-cols-2 gap-4 text-left">
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">🎨</span>
+                <div>
+                  <h3 className="font-semibold">4 Templates</h3>
+                  <p className="text-sm text-text-secondary">Minimalist, Glass, Terminal, Portfolio</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">📝</span>
+                <div>
+                  <h3 className="font-semibold">Block Editor</h3>
+                  <p className="text-sm text-text-secondary">7+ customizable block types</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">🤖</span>
+                <div>
+                  <h3 className="font-semibold">AI Polish</h3>
+                  <p className="text-sm text-text-secondary">Claude AI content enhancement</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">📄</span>
+                <div>
+                  <h3 className="font-semibold">PDF Export</h3>
+                  <p className="text-sm text-text-secondary">Professional downloads</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">💾</span>
+                <div>
+                  <h3 className="font-semibold">Auto-Save</h3>
+                  <p className="text-sm text-text-secondary">Never lose your work</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">🔗</span>
+                <div>
+                  <h3 className="font-semibold">Share Links</h3>
+                  <p className="text-sm text-text-secondary">Public CV pages</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -59,7 +114,7 @@ export default function HomePage() {
       <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2">
         <div className="glass px-6 py-3 rounded-full border border-border-strong">
           <p className="text-sm text-text-secondary">
-            🚀 V1 MVP in Development • Powered by $MINTCV on Base
+            ✨ V1 MVP Complete • Powered by $MINTCV on Base
           </p>
         </div>
       </div>
