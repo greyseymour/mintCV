@@ -84,7 +84,7 @@ export function ConnectWalletButton() {
                     {chain.name}
                   </Button>
 
-                  <Button onClick={openAccountModal} variant="glass-strong">
+                  <Button onClick={openAccountModal} variant="default">
                     {account.displayName}
                     {account.displayBalance
                       ? ` (${account.displayBalance})`
