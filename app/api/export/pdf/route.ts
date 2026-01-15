@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import ReactPDF from '@react-pdf/renderer'
+import { renderToBuffer } from '@react-pdf/renderer'
 import React from 'react'
 import { MinimalistPDF } from '@/lib/pdf/minimalist-pdf'
 import type { Block } from '@/types'
@@ -7,7 +7,7 @@ import type { Block } from '@/types'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { blocks, template } = body
+    const { blocks } = body
 
     if (!blocks) {
       return NextResponse.json(
@@ -16,13 +16,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // For now, use minimalist template for all
-    // In the future, create different PDF templates
-    const pdfDocument = React.createElement(MinimalistPDF, { blocks: blocks as Block[] })
+    // Generate PDF buffer
+    const buffer = await renderToBuffer(React.createElement(MinimalistPDF, { blocks: blocks as Block[] }))
 
-    const stream = await ReactPDF.renderToStream(pdfDocument)
-
-    return new NextResponse(stream as any, {
+    return new NextResponse(buffer, {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': 'attachment; filename="resume.pdf"',
