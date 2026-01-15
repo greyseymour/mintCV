@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { renderToBuffer } from '@react-pdf/renderer'
+import { pdf } from '@react-pdf/renderer'
 import React from 'react'
 import { MinimalistPDF } from '@/lib/pdf/minimalist-pdf'
 import type { Block } from '@/types'
@@ -16,8 +16,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Generate PDF buffer
-    const buffer = await renderToBuffer(React.createElement(MinimalistPDF, { blocks: blocks as Block[] }))
+    // Generate PDF
+    const doc = React.createElement(MinimalistPDF, { blocks: blocks as Block[] })
+    const pdfBlob = await pdf(doc).toBlob()
+    const buffer = await pdfBlob.arrayBuffer()
 
     return new NextResponse(buffer, {
       headers: {
