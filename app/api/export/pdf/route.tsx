@@ -16,9 +16,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Generate PDF
-    const doc = React.createElement(MinimalistPDF, { blocks: blocks as Block[] })
-    const pdfBlob = await pdf(doc).toBlob()
+    // Generate PDF using JSX
+    const pdfBlob = await pdf(<MinimalistPDF blocks={blocks as Block[]} />).toBlob()
     const buffer = await pdfBlob.arrayBuffer()
 
     return new NextResponse(buffer, {
