@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getFarcasterUserByFid, getFarcasterUserByUsername } from '@/lib/api/farcaster'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams

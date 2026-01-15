@@ -9,6 +9,9 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import type { Block } from '@/types'
 
+// Force dynamic rendering for this page
+export const dynamic = 'force-dynamic'
+
 export default function NewEditorPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
