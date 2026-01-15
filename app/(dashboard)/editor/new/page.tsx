@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { BlockEditor } from '@/components/editor/block-editor'
 import { TemplateSelector } from '@/components/templates/template-selector'
@@ -9,10 +9,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import type { Block } from '@/types'
 
-// Force dynamic rendering for this page
-export const dynamic = 'force-dynamic'
-
-export default function NewEditorPage() {
+function EditorContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const cvId = searchParams.get('id')
@@ -244,5 +241,13 @@ export default function NewEditorPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function NewEditorPage() {
+  return (
+    <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading editor...</div>}>
+      <EditorContent />
+    </Suspense>
   )
 }
